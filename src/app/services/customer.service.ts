@@ -17,4 +17,10 @@ export class CustomerService {
   public searchCustomers(keyword:string):Observable<Array<customer>>{
     return this.http.get<Array<customer>>(/*environment.backendHost+*/"http://localhost:8085/customers/search?keyword="+keyword)
   }
+  public saveCustomer(customer:customer):Observable<customer>{
+    return this.http.post<customer>(/*environment.backendHost+*/"http://localhost:8085/customers",customer)
+  }
+  public deleteCustomer(id:number){
+    return this.http.delete(/*environment.backendHost+*/"http://localhost:8085/customers/"+id);
+  }
 }
